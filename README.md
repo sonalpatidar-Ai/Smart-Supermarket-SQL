@@ -74,24 +74,41 @@ SQL Supermarket Management Database | Manage products, customers, sales &amp; em
 📊 Sample Queries
 
 -- Top 5 customers by total spending
+
 SELECT c.Name, SUM(s.TotalAmount) AS TotalSpent
+
 FROM Customers c
+
 JOIN Sales s ON c.CustomerID = s.CustomerID
+
 GROUP BY c.CustomerID
+
 ORDER BY TotalSpent DESC
+
 LIMIT 5;
+
 
 -- Most sold products
+
 SELECT p.ProductName, SUM(sd.Quantity) AS TotalSold
+
 FROM SaleDetails sd
+
 JOIN Products p ON sd.ProductID = p.ProductID
+
 GROUP BY sd.ProductID
+
 ORDER BY TotalSold DESC
+
 LIMIT 5;
 
+
 -- Daily revenue
+
 SELECT SaleDate, SUM(TotalAmount) AS Revenue
+
 FROM Sales
+
 GROUP BY SaleDate;
 
 
